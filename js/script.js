@@ -124,7 +124,7 @@ document.getElementById('info').addEventListener('input', function() {
         document.getElementById('info').style.border = '1px solid blueviolet';
     }
 });
-
+// 
 
 
 const check = (data) => {
