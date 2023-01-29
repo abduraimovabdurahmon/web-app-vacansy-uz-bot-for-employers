@@ -35,16 +35,18 @@ const checkSelect = (idName)=>{
     document.getElementById(idName).style.border = '1px solid green';
 }
 
+
+
 document.getElementById('firstname').addEventListener('input', function() {
-    data.firstname = this.value;
+    data.firstname = this.value.split("'").join('+');
     check(data);
-    checkText(/^[A-Za-z]{0,20}$/g, 0, this.value, 'firstname');
+    checkText(/^[A-Za-z']{0,20}$/g, 0, this.value, 'firstname');
 });
 
 document.getElementById('lastname').addEventListener('input', function() {
-    data.lastname = this.value;
+    data.lastname = this.value.split("'").join('+');
     check(data);
-    checkText(/^[A-Za-z]{0,20}$/g, 1, this.value, 'lastname');
+    checkText(/^[A-Za-z']{0,20}$/g, 1, this.value, 'lastname');
 });
 
 document.getElementById('age').addEventListener('input', function() {
@@ -115,9 +117,9 @@ document.getElementById('time2').addEventListener('input', function() {
 });
 
 document.getElementById('info').addEventListener('input', function() {
-    data.info = this.value;
+    data.info = this.value.split("'").join("+");
     check(data);
-    checkText(/^[A-Za-z0-9\s.+-,()#!]{0,150}$/g, 12, this.value, 'info');
+    checkText(/^[A-Za-z0-9\s.+-,()#'!]{0,150}$/g, 12, this.value, 'info');
     if(this.value == ''){
         document.getElementById('info').style.border = '1px solid blueviolet';
     }
@@ -127,7 +129,7 @@ document.getElementById('info').addEventListener('input', function() {
 
 const check = (data) => {
     if(data.firstname && data.lastname && data.age && data.sex && data.phone && data.email && data.address && data.telegram && data.price && data.experience && data.speciality && data.time1 && data.time2 && data.info) {
-        if(/^[A-Za-z]{0,20}$/g.test(data.firstname) && /^[A-Za-z]{0,20}$/g.test(data.lastname) && /^(1[89]|[2-9]\d)$/gm.test(data.age) && /^9989[012345789][0-9]{7}$/g.test(data.phone) && /^[a-zA-Z0-9._-]{0,40}@[a-zA-Z0-9.-]{0,10}\.[a-zA-Z]{2,4}$/g.test(data.email) && /^[A-Za-z0-9\s.+-,()#!]{0,150}$/g.test(data.info) && /^[0-9]{0,9}$/g.test(data.price) && /^@[A-Za-z0-9_]{5,25}$/g.test(data.telegram)){
+        if(/^[A-Za-z']{0,20}$/g.test(data.firstname) && /^[A-Za-z']{0,20}$/g.test(data.lastname) && /^(1[89]|[2-9]\d)$/gm.test(data.age) && /^9989[012345789][0-9]{7}$/g.test(data.phone) && /^[a-zA-Z0-9._-]{0,40}@[a-zA-Z0-9.-]{0,10}\.[a-zA-Z]{2,4}$/g.test(data.email) && /^[A-Za-z0-9\s.+-,()#'!]{0,150}$/g.test(data.info) && /^[0-9]{0,9}$/g.test(data.price) && /^@[A-Za-z0-9_]{5,25}$/g.test(data.telegram)){
             mainButton.show();
         }
         else{
