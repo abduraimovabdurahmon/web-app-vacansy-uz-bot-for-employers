@@ -83,7 +83,7 @@ document.getElementById('address').addEventListener('change', function() {
 document.getElementById('telegram').addEventListener('input', function() {
     data.telegram = this.value;
     check(data);
-    checkText(/^@[A-Za-z0-9_]{5,25}$/, 7, this.value, 'telegram')
+    checkText(/^@[A-Za-z0-9_]{5,25}$/g, 7, this.value, 'telegram')
 })
 
 document.getElementById('price').addEventListener('input', function() {
